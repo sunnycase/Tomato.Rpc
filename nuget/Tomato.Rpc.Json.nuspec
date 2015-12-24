@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Tomato.Rpc.Json</id>
+    <version>0.0.1-alpha1-1</version>
+    <authors>SunnyCase</authors>
+    <description>Tomato Json Rpc Library.</description>
+    <language>Neutral</language>
+    <projectUrl>https://github.com/sunnycase/Tomato.Rpc/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright (c) 2015 SunnyCase</copyright>
+    <tags>WinRT UWP Rpc Json</tags>
+    <dependencies>
+    	<group>
+    		<dependency id="Newtonsoft.Json" version="7.0.1"/>
+  		</group>
+  		<group targetFramework="uap10.0">
+  			<dependency id="System.Reflection.Emit" version="4.0.0"/>
+  		</group>
+  	</dependencies>
+  </metadata>
+
+  <files>
+    <file src="..\Tomato.Rpc.Json\bin\Debug\Tomato.Rpc.Json.dll" target="lib\uap10.0" />
+    <file src="..\Tomato.Rpc.Json\Properties\Tomato.Rpc.Json.rd.xml" target="lib\uap10.0\Tomato.Rpc.Json\Properties"/>
+    <file src="..\Tomato.Rpc.Json\bin\Debug\Tomato.Rpc.Json.pri" target="lib\uap10.0" />
+</files>
+</package>
