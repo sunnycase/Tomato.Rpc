@@ -5,10 +5,11 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using Tomato.Rpc.Core;
 
-namespace Tomato.Rpc.Json
+namespace Tomato.Rpc.Proxy.Runtime
 {
-    class CallingProxyBuilder
+    public class CallingProxyBuilder
     {
         private static ModuleBuilder _proxyModuleBuilder;
         private const string ProxyAssemblyName = "Tomato.Rpc.DynamicCaliingProxyAssembly";
@@ -30,6 +31,11 @@ namespace Tomato.Rpc.Json
             if (!serviceType.GetTypeInfo().IsInterface)
                 throw new ArgumentException("Must be a interface type.", nameof(serviceType));
             _serviceType = serviceType;
+        }
+
+        public static Func<IPacketSender, IPacketReceiver> CreateActivator<TService>(Type proxyType)
+        {
+            return s => (IPacketReceiver)Activator.CreateInstance(proxyType, s);
         }
 
         public Type Build(PacketBuilder packetBuilder)

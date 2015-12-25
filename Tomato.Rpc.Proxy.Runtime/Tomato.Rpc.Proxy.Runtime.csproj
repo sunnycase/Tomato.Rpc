@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1BBFC7A6-298F-4A8C-B130-5092D0D361BD}</ProjectGuid>
+    <ProjectGuid>{9E5ADD71-6CF8-4CE1-AF82-258BBF32B377}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tomato.Rpc.Test.Interface</RootNamespace>
-    <AssemblyName>Tomato.Rpc.Test.Interface</AssemblyName>
+    <RootNamespace>Tomato.Rpc.Proxy.Runtime</RootNamespace>
+    <AssemblyName>Tomato.Rpc.Proxy.Runtime</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
@@ -107,21 +107,11 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Packet.cs">
-      <DependentUpon>Packet.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <Compile Include="CalledProxyBuilder.cs" />
+    <Compile Include="CallingProxyBuilder.cs" />
+    <Compile Include="PacketBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="Packet.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Packet.cs</LastGenOutput>
-    </Content>
-    <Content Include="Properties\Tomato.Rpc.Test.Interface.rd.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="Properties\Tomato.Rpc.Proxy.Runtime.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tomato.Rpc.Core\Tomato.Rpc.Core.csproj">

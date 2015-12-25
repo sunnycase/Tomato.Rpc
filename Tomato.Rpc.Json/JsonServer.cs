@@ -4,27 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Tomato.Rpc.Core;
 
 namespace Tomato.Rpc.Json
 {
     public class JsonServer<TService> : IMessageClient
     {
-        private static Type _proxyType;
         private readonly Dictionary<Type, Action<object>> _deles = new Dictionary<Type, Action<object>>();
         private readonly IPacketReceiver _proxy;
 
-        private static JsonSerializerSettings _serializerSettings = new JsonSerializerSettings()
+        private readonly JsonSerializerSettings _serializerSettings = new JsonSerializerSettings()
         {
-            TypeNameHandling = TypeNameHandling.Auto,
-            Binder = new PacketBuilder.PacketSerializationBinder()
+            TypeNameHandling = TypeNameHandling.Auto
         };
 
-        public JsonServer(TService service, PacketBuilder packetBuilder)
+        public JsonServer(Func<TService, IPacketReceiver> calledProxyActivator, TService service)
         {
-            if (_proxyType == null)
-                _proxyType = new CalledProxyBuilder(typeof(TService)).Build(packetBuilder);
-            
-            _proxy = (IPacketReceiver)Activator.CreateInstance(_proxyType, service);
+            _proxy = calledProxyActivator(service);
+        }
+
+        public JsonServer(Func<TService, IPacketReceiver> calledProxyActivator, TService service, SerializationBinder serializationBinder)
+        {
+            _serializerSettings.Binder = serializationBinder;
+            _proxy = calledProxyActivator(service);
         }
 
         public void OnReceive(string message)

@@ -99,6 +99,16 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CalledProxy.cs">
+      <DependentUpon>CalledProxy.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CallingProxy.cs">
+      <DependentUpon>CallingProxy.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -111,6 +121,14 @@
     <None Include="Tomato.Rpc.Test.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CalledProxy.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CalledProxy.cs</LastGenOutput>
+    </Content>
+    <Content Include="CallingProxy.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CallingProxy.cs</LastGenOutput>
+    </Content>
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -131,6 +149,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Tomato.Rpc.Core\Tomato.Rpc.Core.csproj">
+      <Project>{6ab83b65-08ea-4a90-9d23-9c3b2fc24836}</Project>
+      <Name>Tomato.Rpc.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Tomato.Rpc.Json\Tomato.Rpc.Json.csproj">
       <Project>{1cf50221-76c8-4249-a065-9a6ad051653b}</Project>
       <Name>Tomato.Rpc.Json</Name>

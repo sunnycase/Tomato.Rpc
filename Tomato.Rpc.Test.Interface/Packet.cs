@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 namespace Tomato.Rpc.Packets
 {
-	public class Void_20Add_28Int32_2C_20Int32_29
+	public sealed class Void_20Add_28Int32_2C_20Int32_29
 	{
 		public System.Int32 Arg0;
 		public System.Int32 Arg1;

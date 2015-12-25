@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tomato.Rpc.Json
+namespace Tomato.Rpc.Core
 {
-    class RpcPacket
+    public sealed class RpcPacket
     {
         public object Call { get; set; }
     }

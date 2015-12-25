@@ -6,8 +6,10 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Tomato.Rpc.Json;
+using Tomato.Rpc.Test.Interface;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -29,12 +31,28 @@ namespace Tomato.Rpc.Test.UWP
         {
             this.InitializeComponent();
 
+#if false
             var packetBuilder = new PacketBuilder(typeof(IService));
             packetBuilder.Build();
-            var client = new JsonClient<IService>(packetBuilder);
-            var server = new JsonServer<IService>(new Service(), packetBuilder);
+            var callingBuilder = new CallingProxyBuilder(typeof(IService));
+            var client = new JsonClient<IService>(CallingProxyBuilder.CreateActivator<IService>(callingBuilder.Build(packetBuilder)));
+            var calledBuilder = new CalledProxyBuilder(typeof(IService));
+            var server = new JsonServer<IService>(CalledProxyBuilder.CreateActivator<IService>(calledBuilder.BuildType(packetBuilder)), new Service(), new PacketBuilder.PacketSerializationBinder());
+#else
+            var client = new JsonClient<ITest>(s => new Tomato.Rpc.Client.RpcCallingProxy(s));
+            var server = new JsonServer<ITest>(s => new Tomato.Rpc.Server.RpcCalledProxy(s), new Test());
+#endif
             client.OnSendMessage = m => server.OnReceive(m);
             client.Proxy.Add(1, 2);
+        }
+
+        class Test : ITest
+        {
+            public void Add(int a, int b)
+            {
+                var dialog = new MessageDialog($"Add: {a}, {b} ");
+                dialog.ShowAsync();
+            }
         }
 
         public interface IService
@@ -46,7 +64,8 @@ namespace Tomato.Rpc.Test.UWP
         {
             public void Add(int a, int b)
             {
-                Debug.WriteLine($"Add: {a}, {b} ");
+                var dialog = new MessageDialog($"Add: {a}, {b} ");
+                dialog.ShowAsync();
             }
         }
     }
