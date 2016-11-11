@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary1
+namespace Tomato.Rpc.Core
 {
-    public class Class1
+    public interface ICalledProxyDispatcher
     {
+        void Receive(RpcPacket packet);
     }
 }

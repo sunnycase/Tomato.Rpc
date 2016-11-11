@@ -8,6 +8,13 @@ namespace Tomato.Rpc.Core
 {
     public sealed class RpcPacket
     {
+        public int CallId { get; set; }
         public object Call { get; set; }
+    }
+
+    public sealed class RpcAnswerPacket
+    {
+        public int CallId { get; set; }
+        public object Return { get; set; }
     }
 }

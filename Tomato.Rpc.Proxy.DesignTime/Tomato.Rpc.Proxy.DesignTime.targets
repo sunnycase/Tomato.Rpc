@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <GenerateRpcPeerProxyToolsPath Condition=" '$(GenerateRpcPeerProxyToolsPath)' == '' ">$(MSBuildThisFileDirectory)bin\Debug\</GenerateRpcPeerProxyToolsPath>
+
+    <PrepareResourcesDependsOn>
+      $(PrepareResourcesDependsOn)
+    </PrepareResourcesDependsOn>
+
+    <CoreCompileDependsOn>
+      GenerateRpcPeerProxy;
+      $(CoreCompileDependsOn)
+    </CoreCompileDependsOn>
+  </PropertyGroup>
+
+  <UsingTask TaskName="GenerateRpcPeerProxy" AssemblyFile="$(GenerateRpcPeerProxyToolsPath)Tomato.Rpc.Proxy.DesignTime.dll" />
+
+  <Target Name="GenerateRpcPeerProxy" DependsOnTargets="ResolveReferences" BeforeTargets="CoreCompile">
+    <GenerateRpcPeerProxy
+      Compile="@(Compile)"
+      ReferencePath="@(ReferencePath)"
+      TargetName="GenerateRpcPeerProxy">
+      <Output TaskParameter="GeneratedCodeFiles" ItemName="GeneratedRpcPeerProxyCode" />
+    </GenerateRpcPeerProxy>
+    <ItemGroup>
+      <Compile Include="@(GeneratedRpcPeerProxyCode)" />
+    </ItemGroup>
+  </Target>
+</Project>
