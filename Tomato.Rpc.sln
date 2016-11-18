@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tomato.Rpc.Core", "Tomato.Rpc.Core\Tomato.Rpc.Core.csproj", "{6AB83B65-08EA-4A90-9D23-9C3B2FC24836}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tomato.Rpc.Json", "Tomato.Rpc.Json\Tomato.Rpc.Json.csproj", "{1CF50221-76C8-4249-A065-9A6AD051653B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tomato.Rpc.Proxy.DesignTime", "Tomato.Rpc.Proxy.DesignTime\Tomato.Rpc.Proxy.DesignTime.csproj", "{AEED2D89-BA06-4A66-876A-3D79D1FA6096}"
@@ -14,7 +12,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tomato.Rpc.Test", "Test\Tomato.Rpc.Test\Tomato.Rpc.Test.csproj", "{CD7726CB-61B6-47CD-9F05-A24DD7432327}"
 	ProjectSection(ProjectDependencies) = postProject
 		{AEED2D89-BA06-4A66-876A-3D79D1FA6096} = {AEED2D89-BA06-4A66-876A-3D79D1FA6096}
+		{2897CFC2-8535-4FFF-9953-E3AF3AC32403} = {2897CFC2-8535-4FFF-9953-E3AF3AC32403}
 	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Tomato.Rpc.Core", "Tomato.Rpc.Core\Tomato.Rpc.Core.xproj", "{2897CFC2-8535-4FFF-9953-E3AF3AC32403}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,21 +23,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6AB83B65-08EA-4A90-9D23-9C3B2FC24836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6AB83B65-08EA-4A90-9D23-9C3B2FC24836}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6AB83B65-08EA-4A90-9D23-9C3B2FC24836}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6AB83B65-08EA-4A90-9D23-9C3B2FC24836}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1CF50221-76C8-4249-A065-9A6AD051653B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1CF50221-76C8-4249-A065-9A6AD051653B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CF50221-76C8-4249-A065-9A6AD051653B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CF50221-76C8-4249-A065-9A6AD051653B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AEED2D89-BA06-4A66-876A-3D79D1FA6096}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEED2D89-BA06-4A66-876A-3D79D1FA6096}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEED2D89-BA06-4A66-876A-3D79D1FA6096}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEED2D89-BA06-4A66-876A-3D79D1FA6096}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CD7726CB-61B6-47CD-9F05-A24DD7432327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CD7726CB-61B6-47CD-9F05-A24DD7432327}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD7726CB-61B6-47CD-9F05-A24DD7432327}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD7726CB-61B6-47CD-9F05-A24DD7432327}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2897CFC2-8535-4FFF-9953-E3AF3AC32403}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2897CFC2-8535-4FFF-9953-E3AF3AC32403}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2897CFC2-8535-4FFF-9953-E3AF3AC32403}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2897CFC2-8535-4FFF-9953-E3AF3AC32403}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

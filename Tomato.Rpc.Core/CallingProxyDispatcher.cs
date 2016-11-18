@@ -15,6 +15,8 @@ namespace Tomato.Rpc
         private int _nextCallId = 0;
         private readonly ConcurrentDictionary<int, TaskCompletionSource<RpcAnswerPacket>> _answerWaiters = new ConcurrentDictionary<int, TaskCompletionSource<RpcAnswerPacket>>();
 
+        public TimeSpan Timeout { get; set; } = System.Threading.Timeout.InfiniteTimeSpan;
+
         public CallingProxyDispatcher(Func<RpcPacket, Task> onSendPacket)
         {
             if (onSendPacket == null)
@@ -51,15 +53,26 @@ namespace Tomato.Rpc
             var tcs = new TaskCompletionSource<RpcAnswerPacket>();
             if (!_answerWaiters.TryAdd(callId, tcs))
                 throw new InvalidOperationException("Cannot Register answer waiter.");
+
+            var timeout = Timeout;
+            if (timeout != System.Threading.Timeout.InfiniteTimeSpan)
+                return Task.WhenAny(tcs.Task, Task.Run(async () =>
+                {
+                    await Task.Delay(timeout);
+                    TaskCompletionSource<RpcAnswerPacket> theTcs;
+                    if (_answerWaiters.TryRemove(callId, out theTcs))
+                        throw new TimeoutException();
+                    else
+                        return await tcs.Task;
+                })).Unwrap();
             return tcs.Task;
         }
 
         public void Receive(RpcAnswerPacket packet)
         {
             TaskCompletionSource<RpcAnswerPacket> tcs;
-            if (!_answerWaiters.TryRemove(packet.CallId, out tcs))
-                throw new InvalidOperationException("Cannot find answer waiter.");
-            tcs.SetResult(packet);
+            if (_answerWaiters.TryRemove(packet.CallId, out tcs))
+                tcs.SetResult(packet);
         }
     }
 }

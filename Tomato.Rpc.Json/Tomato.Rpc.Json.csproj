@@ -34,15 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="JsonClient.cs" />
-    <Compile Include="JsonServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Tomato.Rpc.Core\Tomato.Rpc.Core.csproj">
-      <Project>{6ab83b65-08ea-4a90-9d23-9c3b2fc24836}</Project>
-      <Name>Tomato.Rpc.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

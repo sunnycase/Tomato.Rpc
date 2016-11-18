@@ -128,7 +128,7 @@ namespace Tomato.Rpc.Proxy.DesignTime
             string.Join("__", method.ParameterList.Parameters.Select(o =>
            {
                var symbol = semanticModel.GetSymbolInfo(o.Type).Symbol;
-               return symbol.GetFullMetadataName().Replace('.', '_');
+               return Uri.EscapeDataString(symbol.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat)).Replace('%', '_').Replace('.', '_');
            }));
         }
 

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Tomato.Rpc.Core</id>
-    <version>0.0.1-alpha1-2</version>
+    <version>1.0.0</version>
     <authors>SunnyCase</authors>
     <description>Tomato Rpc Core Library.</description>
     <language>Neutral</language>
@@ -10,7 +10,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes></releaseNotes>
     <copyright>Copyright (c) 2015 SunnyCase</copyright>
-    <tags>WinRT UWP Rpc Json</tags>
+    <tags>NetCore Rpc</tags>
   </metadata>
 
   <files>

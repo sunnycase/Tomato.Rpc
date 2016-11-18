@@ -1,0 +1,35 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "title": "Tomato.Rpc.Core",
+  "description": "Tomato Rpc Core Library.",
+  "authors": [ "SunnyCase" ],
+  "copyright": "Copyright (c) 2015 SunnyCase",
+  "packOptions": {
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/sunnycase/Tomato.Rpc/"
+    },
+    "owners": [ "SunnyCase" ],
+    "tags": [ "NetCore", "Rpc" ]
+  },
+
+  "dependencies": {
+    "Microsoft.CSharp": "4.0.1-*",
+    "System.Collections": "4.0.11-*",
+    "System.Linq": "4.1.0-*",
+    "System.Collections.Concurrent": "4.0.12-*",
+    "System.Threading": "4.0.11-*",
+    "System.Threading.Tasks": "4.0.11-*",
+    "System.Reflection": "4.1.0-*",
+    "System.Reflection.Extensions": "4.0.1-*",
+    "System.Runtime": "4.1.0-*",
+    "System.Runtime.InteropServices": "4.1.0-*"
+  },
+
+  "frameworks": {
+    "netstandard1.0": {
+      "imports": "dnxcore50"
+    }
+  }
+}

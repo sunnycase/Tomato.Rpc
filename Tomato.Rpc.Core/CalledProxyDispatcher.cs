@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tomato.Rpc.Core;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace Tomato.Rpc
 {

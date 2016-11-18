@@ -17,7 +17,10 @@ namespace Tomato.Rpc.Test
             {
                 _calledDispatcher.Receive(p);
                 return Task.FromResult<object>(null);
-            });
+            })
+            {
+                Timeout = TimeSpan.FromSeconds(0)
+            };
             _calledDispatcher = new CalledProxyDispatcher<Rpc.RpcServerCalledProxy>(new Rpc.RpcServerCalledProxy(new RpcServer()), p =>
             {
                 _callingDispatcher.Receive(p);
@@ -28,7 +31,7 @@ namespace Tomato.Rpc.Test
             Console.WriteLine($"Add(1, 2) = {service.Add(1, 2).Result}");
             Console.WriteLine($"Minus(3, 2) = {service.Minus(3, 2).Result}");
             service.SayHello();
-            service.SayBye();
+            service.SayBye(null);
 
             Console.Read();
         }
@@ -52,7 +55,7 @@ namespace Tomato.Rpc.Test
             return Task.FromResult<object>(null);
         }
 
-        public void SayBye()
+        public void SayBye(IReadOnlyCollection<int> items)
         {
             Console.WriteLine("Bye");
         }
@@ -64,6 +67,6 @@ namespace Tomato.Rpc.Test
         Task<int> Add(int a, int b);
         Task<int> Minus(int a, int b);
         Task SayHello();
-        void SayBye();
+        void SayBye(IReadOnlyCollection<int> items);
     }
 }
